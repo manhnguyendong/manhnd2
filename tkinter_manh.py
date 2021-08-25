@@ -1,0 +1,46 @@
+from tkinter import *
+from tkinter.ttk import *
+
+def frame1(parent):
+    sub_frame = Frame(parent)
+    sub_frame.grid(column=0, row=0, padx=10)
+    sub_frame.columnconfigure(0, weight=1)
+    sub_frame.columnconfigure(1, weight=3)
+    find_label = Label(sub_frame, text='Find what:', justify=RIGHT)
+    find_label.grid(column=0, row=0, pady=(0, 5))
+    replace_label = Label(sub_frame, text='Replace with:', justify=RIGHT)
+    replace_label.grid(column=0, row=1, pady=(0, 5), padx=(10, 0))
+    find = StringVar()
+    find_entry = Entry(sub_frame, textvariable=find)
+    find_entry.grid(column=1, row=0, pady=5)
+    replace = StringVar()
+    replace_entry = Entry(sub_frame, textvariable=replace)
+    replace_entry.grid(column=1, row=1, pady=5)
+    Checkbutton1 = IntVar()
+    match_case = Checkbutton(sub_frame, text='Match Case', variable=Checkbutton1, onvalue=1, offvalue=0)
+    match_case.grid(column=0, row=2, pady=(0, 5), padx=(0, 0))
+    Checkbutton2 = IntVar()
+    wrap_arround = Checkbutton(sub_frame, text='Wrap around', variable=Checkbutton2, onvalue=1, offvalue=0)
+    wrap_arround.grid(column=0, row=3, pady= (0, 5), padx=(6, 0))
+
+def frame2(parent):
+    sub_frame = Frame(parent)
+    sub_frame.grid(column=1, row=0)
+    sub_frame.columnconfigure(0, weight=1)
+    find_Button = Button(sub_frame, text='Find Next')
+    find_Button.grid(column=0, row=0, pady=(20, 2))
+    replace_Button = Button(sub_frame, text='Replace')
+    replace_Button.grid(column=0, row=1,pady=5)
+    replace_all_Button = Button(sub_frame, text='Replace All')
+    replace_all_Button.grid(column=0, row=2, pady=(0, 5))
+    cancel_Button = Button(sub_frame, text='Cancel')
+    cancel_Button.grid(column=0, row=3, pady=(5, 5))
+
+master = Tk()
+master.columnconfigure(0, weight=5)
+master.columnconfigure(1, weight=1)
+master.title('Replace')
+frame1(master)
+frame2(master)
+
+mainloop()
